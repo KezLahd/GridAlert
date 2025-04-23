@@ -1,0 +1,23 @@
+{
+  "name": "gridalert-ausgrid",
+  "version": "1.0.0",
+  "description": "Ausgrid outage scraper for GridAlert monitoring system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "power-outages",
+    "ausgrid",
+    "monitoring",
+    "scraper"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.42.1"
+  }
+} 

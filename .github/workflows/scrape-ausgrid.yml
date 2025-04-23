@@ -1,0 +1,32 @@
+name: Scrape Ausgrid Outages
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Runs every 10 minutes
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Playwright
+        working-directory: ./ausgrid-scraper
+        run: |
+          npm install
+          npx playwright install chromium
+          npx playwright install-deps chromium
+          
+      - name: Run scraper
+        working-directory: ./ausgrid-scraper
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: node index.js 
