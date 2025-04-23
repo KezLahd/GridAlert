@@ -10,23 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
           
-      - name: Install Playwright
-        working-directory: ./ausgrid-scraper
+      - name: Install Dependencies
         run: |
+          cd ausgrid-scraper
           npm install
-          npx playwright install chromium
-          npx playwright install-deps chromium
           
-      - name: Run scraper
-        working-directory: ./ausgrid-scraper
+      - name: Run Scraper
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: node index.js 
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          cd ausgrid-scraper
+          node scraper.js 

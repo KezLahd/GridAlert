@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # GridAlert
 
 Real-time power outage monitoring system for Australian electricity providers.
@@ -40,3 +41,6 @@ The data is stored in Supabase under the `api.outages` table with the following 
 ## Automated Scraping
 
 The scraper runs automatically every 10 minutes using GitHub Actions. You can also trigger it manually from the Actions tab in the repository. 
+=======
+# GridAlert
+>>>>>>> a86912fd70cd1f5bed6d828b9b739907defc6ace
