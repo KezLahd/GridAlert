@@ -1,0 +1,6 @@
+node_modules/
+.env
+.next/
+backups/
+*.log
+outages.json 
